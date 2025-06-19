@@ -30,8 +30,7 @@
 
         <!-- Barre de recherche -->
         <div class="mb-4">
-            <input oninput="searchClient(this.value)" placeholder="🔍 Rechercher un nom, email, tel..."
-                class="w-full p-3 border rounded" />
+            <input oninput="searchClient(this.value)" placeholder="🔍 Rechercher un nom, email, tel..." class="w-full p-3 border rounded" />
         </div>
 
         <!-- FORMULAIRE CLIENT -->
@@ -40,15 +39,21 @@
             <input id="email" type="email" placeholder="Email" required class="p-3 border rounded w-full" />
             <input id="phone" placeholder="Téléphone" required class="p-3 border rounded w-full" />
             <input id="address" placeholder="Adresse" required class="p-3 border rounded w-full" />
-            <input id="amount" type="number" placeholder="Montant payé" required class="p-3 border rounded w-full"
-                oninput="previewReste()" />
+            <input id="amount" type="number" placeholder="Montant payé" required class="p-3 border rounded w-full" oninput="previewReste()" />
+            <div class="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-between items-center">
+                <span id="restePreview" class="text-sm text-gray-600">Reste : 10 000 Fc</span>
+                <div class="flex gap-2">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">💾 Enregistrer</button>
+                    <button type="button" onclick="form.reset();previewReste()" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">🔄 Réinitialiser</button>
+                    <button onclick="sendWhatsAppTicket()" type="button" class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">📲 Envoyer WhatsApp</button>
+                </div>
+            </div>
             <input type="hidden" id="editIndex" />
         </form>
 
         <!-- Boutons -->
         <div class="flex flex-wrap gap-4 mb-4 justify-between items-center">
-            <button onclick="exportExcel()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">📤
-                Export Excel</button>
+            <button onclick="exportExcel()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">📤 Export Excel</button>
             <span class="text-gray-500 text-xs">Données enregistrées automatiquement dans votre navigateur</span>
         </div>
 
@@ -71,8 +76,7 @@
         </div>
 
         <!-- Modal Ticket -->
-        <div id="ticketModal"
-            class="hidden fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 px-4">
+        <div id="ticketModal" class="hidden fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 px-4">
             <div id="ticketCard" class="bg-white p-6 rounded-lg w-full max-w-sm text-center shadow-xl relative">
                 <h2 class="text-xl font-bold mb-4 text-blue-700">🎟️ Ticket - FIFA 25</h2>
                 <div class="text-sm text-left space-y-1 mb-3">
@@ -85,21 +89,9 @@
                 </div>
                 <canvas id="qrCode" class="mx-auto my-3"></canvas>
                 <div class="flex flex-col sm:flex-row justify-center gap-2 mt-3">
-                    <button onclick="downloadPDF()"
-                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">📄 Enregistrer PDF</button>
+                    <button onclick="downloadPDF()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">📄 Enregistrer PDF</button>
                     <button onclick="closeModal()" class="text-gray-600 text-sm underline">Fermer</button>
                 </div>
-            </div>
-        </div>
-        <div class="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-between items-center">
-            <span id="restePreview" class="text-sm text-gray-600">Reste : 10 000 Fc</span>
-            <div class="flex gap-2">
-                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">💾
-                    Enregistrer</button>
-                <button type="button" onclick="form.reset();previewReste()"
-                    class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">🔄 Réinitialiser</button>
-                <button onclick="sendWhatsAppTicket()" type="button"
-                    class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">📲 Envoyer WhatsApp</button>
             </div>
         </div>
     </div>
